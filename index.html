@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>你的名字 | 机器学习主页</title>
+  <meta name="description" content="个人学术主页 - 机器学习 / 计算机视觉 / 多模态" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>">
+  <style>
+    :root{--bg:#ffffff;--fg:#111;--muted:#666;--link:#0b57d0;--card:#f7f7f9;--border:#e7e7ef;--accent:#0b57d0;--maxw:860px;--radius:16px}
+    @media (prefers-color-scheme: dark){:root{--bg:#0b0b10;--fg:#eaeaf2;--muted:#a0a0b2;--link:#8ab4ff;--card:#13131a;--border:#232334;--accent:#8ab4ff}}
+    html,body{height:100%}
+    body{margin:0;font:16px/1.65 system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Apple Color Emoji","Segoe UI Emoji";background:var(--bg);color:var(--fg);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+    .wrap{max-width:var(--maxw);margin:0 auto;padding:24px 18px 60px}
+    header{display:flex;gap:18px;align-items:center;margin:12px 0 18px}
+    .avatar{width:88px;height:88px;border-radius:50%;object-fit:cover;background:linear-gradient(135deg,#ddd,#eee);border:1px solid var(--border);flex:0 0 auto}
+    .title h1{font-size:26px;margin:0 0 6px;letter-spacing:.3px}
+    .title p{margin:2px 0;color:var(--muted)}
+    nav{position:sticky;top:0;backdrop-filter:saturate(180%) blur(6px);background:color-mix(in oklab,var(--bg),transparent 10%);border-bottom:1px solid var(--border);z-index:9}
+    nav .nav{max-width:var(--maxw);margin:0 auto;padding:10px 18px;display:flex;gap:14px;flex-wrap:wrap}
+    nav a{color:var(--fg);text-decoration:none;padding:6px 10px;border-radius:10px;border:1px solid transparent}
+    nav a:hover{border-color:var(--border);background:var(--card)}
+    section{padding:22px 0;scroll-margin-top:72px}
+    .card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:18px}
+    h2{font-size:20px;margin:0 0 12px}
+    h3{font-size:16px;margin:14px 0 6px}
+    ul{margin:8px 0 0 20px}
+    a{color:var(--link)}
+    .grid{display:grid;gap:14px}
+    @media (min-width:720px){.grid{grid-template-columns:1fr 1fr}}
+    .badges{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
+    .badge{border:1px solid var(--border);padding:4px 8px;border-radius:999px;font-size:12px;color:var(--muted)}
+    .links{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
+    .links a{display:inline-flex;align-items:center;gap:6px;padding:6px 10px;border:1px solid var(--border);border-radius:999px;color:var(--fg);text-decoration:none}
+    .links a:hover{background:var(--card)}
+    footer{margin-top:28px;color:var(--muted);font-size:14px}
+    .muted{color:var(--muted)}
+    .kicker{font-size:13px;text-transform:uppercase;letter-spacing:.12em;color:var(--muted)}
+    .pill{display:inline-block;padding:2px 8px;border-radius:999px;background:var(--card);border:1px solid var(--border);font-size:12px;color:var(--muted)}
+    .mono{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace}
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="nav">
+      <a href="#about">关于</a>
+      <a href="#interests">研究兴趣</a>
+      <a href="#pubs">论文</a>
+      <a href="#projects">项目</a>
+      <a href="#contact">联系</a>
+    </div>
+  </nav>
+
+  <div class="wrap">
+    <header>
+      <img class="avatar" src="me.jpg" alt="avatar" onerror="this.style.visibility='hidden'">
+      <div class="title">
+        <div class="kicker">Machine Learning / Vision-Language</div>
+        <h1>你的名字 <span class="pill">Ph.D. Candidate</span></h1>
+        <p>School of Computing and Information Systems, University of Melbourne</p>
+        <div class="links">
+          <a href="mailto:you@example.com">📧 <span>you@example.com</span></a>
+          <a href="https://scholar.google.com/">🎓 <span>Google Scholar</span></a>
+          <a href="https://github.com/yourname">💻 <span>GitHub</span></a>
+          <a href="https://www.linkedin.com/in/yourname">🔗 <span>LinkedIn</span></a>
+          <a href="cv.pdf">📄 <span>CV</span></a>
+        </div>
+      </div>
+    </header>
+
+    <section id="about" class="card">
+      <h2>关于我</h2>
+      <p>我专注于<strong>视觉-语言模型（VLMs）</strong>、<strong>基础模型鲁棒性</strong>与<strong>AI 生成内容检测</strong>。研究兴趣包括跨模态对齐、训练-自由/推理-期方法、以及可解释与可信 AI。</p>
+      <div class="badges">
+        <div class="badge">Vision-Language</div>
+        <div class="badge">Robustness</div>
+        <div class="badge">AIGI Detection</div>
+        <div class="badge">Prompt Learning</div>
+      </div>
+    </section>
+
+    <section id="interests">
+      <h2>研究兴趣</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>跨模态对齐与提示学习</h3>
+          <p class="muted">层级对齐分析、类感知权重、LLM 生成提示的协同。</p>
+        </div>
+        <div class="card">
+          <h3>基础模型鲁棒性</h3>
+          <p class="muted">对抗/后门攻击、隐私与内容安全、可信评测基准。</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="pubs">
+      <h2>论文</h2>
+      <ol>
+        <li><strong>CARPRT: Class-Aware Prompt Reweighting for Pre-Trained Vision-Language Models</strong> <span class="muted">（ICLR 2025 under review）</span></li>
+        <li><strong>Understanding Hierarchical Cross-Modal Alignment in CLIP Models</strong> <span class="muted">（NeurIPS 2025 submission）</span></li>
+      </ol>
+      <p class="muted">更多条目用 Markdown 写就行；如需 BibTeX，可在页脚提供 <span class="mono">.bib</span> 链接。</p>
+    </section>
+
+    <section id="projects">
+      <h2>项目</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Prompt Weighting Toolkit</h3>
+          <p class="muted">最小可复现工具包：类感知加权与对齐分析。</p>
+          <p><a href="https://github.com/yourname/project" target="_blank" rel="noopener">GitHub →</a></p>
+        </div>
+        <div class="card">
+          <h3>AIGI Robustness Bench</h3>
+          <p class="muted">对抗/后门/统计一致性攻击基准；支持多数据集与指标。</p>
+          <p><a href="#" target="_blank" rel="noopener">Project Page →</a></p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="card">
+      <h2>联系</h2>
+      <p>📧 邮箱：<a href="mailto:you@example.com">you@example.com</a></p>
+      <p>📍 地点：Melbourne, Australia</p>
+      <p>🧾 简历：<a href="cv.pdf">cv.pdf</a></p>
+    </section>
+
+    <footer>
+      <p>© <span id="y"></span> 你的名字 · 由 <span class="mono">GitHub Pages</span> 驱动 · <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a></p>
+    </footer>
+  </div>
+
+  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+</body>
+</html>
