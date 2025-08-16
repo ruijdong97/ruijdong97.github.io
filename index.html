@@ -80,42 +80,59 @@
       padding:12px 14px; border-radius:10px; color:var(--accent-ink)
     }
 
-    /* ========= Publications ========= */
-    #pubs ul{list-style:none; padding-left:0; margin:10px 0 0}
-    .pub-item{
-      display:flex; gap:18px; align-items:flex-start; margin:0 0 22px;
-      padding:12px 0; border-bottom:1px dashed var(--line);
+    /* ========= Publications (vertical layout) ========= */
+    #pubs .pub{
+      margin-bottom: 28px;
+      padding-bottom: 18px;
+      border-bottom: 1px dashed var(--line);
+      text-align: center;
     }
-    .pub-fig{flex:0 0 240px}
-    .pub-fig img{
-      max-width:100%; height:auto; border:1px solid var(--line); border-radius:6px; background:#fff;
+    /* image size control */
+    .pub-fig{
+      display:block;
+      margin:0 auto 1rem auto;
+      max-width:60%;        /* <= main control */
+      max-height:360px;     /* avoid overly tall */
+      height:auto;
+      border-radius:8px;
+      border:1px solid var(--line);
+      background:#fff;
+      box-shadow:0 2px 6px rgba(0,0,0,0.08);
     }
-    .pub-body{flex:1; min-width:0}
-    .pub-title{
-      font-weight:700; color:var(--fg);
-      border-left:3px solid var(--accent); padding-left:10px; line-height:1.5;
+    #pubs .pub-text{
+      max-width:740px;
+      margin:0 auto;
+      text-align:left;
     }
-    .pub-meta{margin-top:4px}
-    .btns{display:flex; gap:8px; flex-wrap:wrap; margin-top:8px}
+    #pubs .title{
+      font-weight:700; line-height:1.5; color:var(--fg);
+      border-left:3px solid var(--accent); padding-left:10px; margin-bottom:6px;
+    }
+    .tag{
+      display:inline-block; padding:2px 8px; border:1px solid var(--btn-bd); border-radius:999px;
+      font-size:12px; color:var(--muted); background:#fff; margin-left:8px
+    }
+    .btns{display:flex; gap:8px; flex-wrap:wrap; margin-top:10px}
     .btn{
       display:inline-flex; align-items:center; gap:6px; padding:6px 10px;
       border-radius:999px; border:1px solid var(--btn-bd); background:var(--btn-bg);
       color:var(--fg); font-size:14px;
     }
     .btn:hover{border-color:var(--accent); color:var(--accent)}
-    .tag{display:inline-block; padding:2px 8px; border:1px solid var(--btn-bd); border-radius:999px;
-      font-size:12px; color:var(--muted); background:#fff; margin-left:8px}
 
     /* ========= Lists ========= */
     ul.clean{list-style:none; padding-left:0}
     ul.clean li{margin:6px 0}
 
-    /* ========= Responsive ========= */
-    @media (max-width:720px){
-      .pub-item{flex-direction:column}
-      .pub-fig{width:100%; flex:0 0 auto}
-      nav{border:none; padding-bottom:0; margin-bottom:12px}
+    /* ========= Lightbox ========= */
+    .lightbox{
+      position:fixed; inset:0; display:none; place-items:center;
+      background:rgba(0,0,0,.62); z-index:9999; padding:4vh 4vw;
     }
+    .lightbox img{
+      max-width:92vw; max-height:92vh; border-radius:10px; background:#fff; border:1px solid #0003;
+    }
+    .lightbox.show{display:grid}
 
     /* ========= Print ========= */
     @media print{
@@ -127,71 +144,76 @@
 </head>
 <body>
   <div class="wrap">
-    <header>
-      <h1>Ruijiang Dong <span class="role-pill">Ph.D. Candidate</span></h1>
-      <div class="meta">School of Computing and Information Systems, Faculty of Engineering and Information Technology, The University of Melbourne</div>
-      <div class="links">
-        <a class="link-chip" href="mailto:ruijiangdong.ml@gmail.com">📧 ruijiangdong.ml@gmail.com</a>
-        <a class="link-chip" href="https://scholar.google.com/" target="_blank" rel="noopener">🎓 Google Scholar</a>
-        <a class="link-chip" href="https://github.com/ruijdong97" target="_blank" rel="noopener">💻 GitHub</a>
+    <!-- Header with photo -->
+    <header style="display:flex; align-items:center; gap:18px">
+      <div style="flex:0 0 110px">
+        <img src="imgs/me.png" alt="Ruijiang Dong photo"
+             style="width:100%; border-radius:50%; border:2px solid var(--line)">
+      </div>
+      <div>
+        <h1>Ruijiang Dong <span class="role-pill">Ph.D. Student</span></h1>
+        <div class="meta">School of Computing and Information Systems, Faculty of Engineering and Information Technology, The University of Melbourne</div>
+        <div class="links">
+          <a class="link-chip" href="mailto:ruijiangdong.ml@gmail.com">📧 ruijiangdong.ml@gmail.com</a>
+          <a class="link-chip" href="https://scholar.google.com/" target="_blank" rel="noopener">🎓 Google Scholar</a>
+          <a class="link-chip" href="https://github.com/ruijdong97" target="_blank" rel="noopener">💻 GitHub</a>
+        </div>
       </div>
     </header>
 
     <nav>
-      <a href="#about">About</a>
+      <a href="#about">About Me</a>
       <a href="#pubs">Publications</a>
       <a href="#service">Academic Services</a>
     </nav>
 
+    <!-- About -->
     <section id="about">
-  <h2>About Me</h2>
-  <p>
-    I am <strong>Ruijiang Dong</strong>, a Ph.D. student in the
-    <strong>Trustworthy Machine Learning and Reasoning Group (TMLR)</strong>,
-    Faculty of Engineering and Information Technology, The University of Melbourne,
-    advised by <strong>Dr. Feng Liu</strong>, <strong>Prof. Jianzhong Qi</strong>, and <strong>Dr. Zesheng Ye</strong>.
-  </p>
-  <p>
-    My research focuses on <strong>vision-language models (VLMs)</strong>,
-    with a particular interest in <em>efficient adaptation and prompt learning</em>
-    for large-scale models. 
-  </p>
-  <p>
-    Prior to my Ph.D., I worked as a research assistant at the
-    <strong>TMLR Lab at Hong Kong Baptist University (HKBU)</strong>, where I developed methods for
-    <em>source-free domain adaptation</em>.
-  </p>
-  <div class="callout muted-2">
-    Current focus: Efficient VLM tuning · Prompt learning · Training-free / inference-only methods
-  </div>
-</section>
-
-
-    <section id="pubs">
-      <h2>Publications</h2>
-      <ul>
-        <li class="pub-item">
-          <div class="pub-fig">
-            <img src="degnet_overview.svg" alt="DEG-Net overview figure">
-          </div>
-          <div class="pub-body">
-            <div class="pub-title">
-              Diversity-enhancing Generative Network for Few-shot Hypothesis Adaptation
-              <span class="tag">ICML 2023</span>
-            </div>
-            <div class="pub-meta muted">
-              <strong>Ruijiang Dong</strong>*, Feng Liu*, Haoang Chi, Tongliang Liu, Mingming Gong,
-              Gang Niu, Masashi Sugiyama, Bo Han
-            </div>
-            <div class="btns">
-              <a class="btn" href="https://arxiv.org/abs/2307.05948" target="_blank" rel="noopener">📄 Paper</a>
-              <a class="btn" href="https://github.com/Ruijiang97/DEG-Net" target="_blank" rel="noopener">🧪 Code</a>
-            </div>
-          </div>
-        </li>
-      </ul>
+      <h2>About Me</h2>
+      <p>
+        I am <strong>Ruijiang Dong</strong>, a Ph.D. student in the
+        <strong>Trustworthy Machine Learning and Reasoning Group (TMLR)</strong>,
+        Faculty of Engineering and Information Technology, The University of Melbourne,
+        advised by <strong>Dr. Feng Liu</strong>, <strong>Prof. Jianzhong Qi</strong>, and <strong>Dr. Zesheng Ye</strong>.
+      </p>
+      <p>
+        My research focuses on <strong>vision-language models (VLMs)</strong>,
+        with a particular interest in <em>efficient adaptation and prompt learning</em>
+        for large-scale models.
+      </p>
+      <p>
+        Prior to my Ph.D., I worked as a research assistant at the
+        <strong>TMLR Lab at Hong Kong Baptist University (HKBU)</strong>, where I developed methods for
+        <em>source-free domain adaptation</em>.
+      </p>
+      <div class="callout muted-2">
+        Current focus: Efficient VLM tuning · Prompt learning · Training-free / inference-only methods
+      </div>
     </section>
 
+    <!-- Publications (vertical layout) -->
+    <section id="pubs">
+      <h2>Publications</h2>
+      <div class="pub">
+        <img src="imgs/deg-net.png" alt="Overview figure" class="pub-fig" id="figureDegNet">
+        <div class="pub-text">
+          <div class="title">
+            Diversity-enhancing Generative Network for Few-shot Hypothesis Adaptation
+            <span class="tag">ICML 2023</span>
+          </div>
+          <div class="muted">
+            <strong>Ruijiang Dong</strong>*, Feng Liu*, Haoang Chi, Tongliang Liu, Mingming Gong,
+            Gang Niu, Masashi Sugiyama, Bo Han
+          </div>
+          <div class="btns">
+            <a class="btn" href="https://arxiv.org/abs/2307.05948" target="_blank" rel="noopener">📄 Paper</a>
+            <a class="btn" href="https://github.com/Ruijiang97/DEG-Net" target="_blank" rel="noopener">🧪 Code</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Academic services -->
     <section id="service">
       <h2>Academic Services</h2>
       <ul class="clean muted">
@@ -200,11 +222,26 @@
       </ul>
     </section>
 
-    
+    <!-- Footer -->
+    <section class="muted-2" style="margin-top:28px">
+      Last updated: <span id="last"></span>
+    </section>
+  </div>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <img src="imgs/deg-net.png" alt="Overview figure preview">
   </div>
 
   <script>
+    // Last updated
     document.getElementById('last').textContent = new Date().toISOString().slice(0,10);
+
+    // Simple lightbox
+    const lb = document.getElementById('lightbox');
+    const fig = document.getElementById('figureDegNet');
+    fig.addEventListener('click', ()=> lb.classList.add('show'));
+    lb.addEventListener('click', ()=> lb.classList.remove('show'));
   </script>
 </body>
 </html>
