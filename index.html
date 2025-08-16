@@ -1,135 +1,210 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>你的名字 | 机器学习主页</title>
-  <meta name="description" content="个人学术主页 - 机器学习 / 计算机视觉 / 多模态" />
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ruijiang Dong</title>
+  <meta name="description" content="Ruijiang Dong — academic homepage">
   <style>
-    :root{--bg:#ffffff;--fg:#111;--muted:#666;--link:#0b57d0;--card:#f7f7f9;--border:#e7e7ef;--accent:#0b57d0;--maxw:860px;--radius:16px}
-    @media (prefers-color-scheme: dark){:root{--bg:#0b0b10;--fg:#eaeaf2;--muted:#a0a0b2;--link:#8ab4ff;--card:#13131a;--border:#232334;--accent:#8ab4ff}}
-    html,body{height:100%}
-    body{margin:0;font:16px/1.65 system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Apple Color Emoji","Segoe UI Emoji";background:var(--bg);color:var(--fg);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
-    .wrap{max-width:var(--maxw);margin:0 auto;padding:24px 18px 60px}
-    header{display:flex;gap:18px;align-items:center;margin:12px 0 18px}
-    .avatar{width:88px;height:88px;border-radius:50%;object-fit:cover;background:linear-gradient(135deg,#ddd,#eee);border:1px solid var(--border);flex:0 0 auto}
-    .title h1{font-size:26px;margin:0 0 6px;letter-spacing:.3px}
-    .title p{margin:2px 0;color:var(--muted)}
-    nav{position:sticky;top:0;backdrop-filter:saturate(180%) blur(6px);background:color-mix(in oklab,var(--bg),transparent 10%);border-bottom:1px solid var(--border);z-index:9}
-    nav .nav{max-width:var(--maxw);margin:0 auto;padding:10px 18px;display:flex;gap:14px;flex-wrap:wrap}
-    nav a{color:var(--fg);text-decoration:none;padding:6px 10px;border-radius:10px;border:1px solid transparent}
-    nav a:hover{border-color:var(--border);background:var(--card)}
-    section{padding:22px 0;scroll-margin-top:72px}
-    .card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:18px}
-    h2{font-size:20px;margin:0 0 12px}
-    h3{font-size:16px;margin:14px 0 6px}
-    ul{margin:8px 0 0 20px}
-    a{color:var(--link)}
-    .grid{display:grid;gap:14px}
-    @media (min-width:720px){.grid{grid-template-columns:1fr 1fr}}
-    .badges{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
-    .badge{border:1px solid var(--border);padding:4px 8px;border-radius:999px;font-size:12px;color:var(--muted)}
-    .links{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
-    .links a{display:inline-flex;align-items:center;gap:6px;padding:6px 10px;border:1px solid var(--border);border-radius:999px;color:var(--fg);text-decoration:none}
-    .links a:hover{background:var(--card)}
-    footer{margin-top:28px;color:var(--muted);font-size:14px}
+    /* ========= Design Tokens ========= */
+    :root{
+      --maxw: 820px;
+      --fg: #101315;
+      --muted: #5b6670;
+      --muted-2: #7b8794;
+      --bg: #ffffff;
+      --line: #e6e9ee;
+      /* low-saturation blue */
+      --accent: #3a6fb3;
+      --accent-ink: #254a77;
+      --accent-weak: #eaf1fb;
+      --link: #2f6db0;
+      --btn-bg: #edf3fb;
+      --btn-bd: #dbe6f6;
+    }
+    @media (prefers-color-scheme: dark){
+      :root{
+        --fg:#e8ecf1; --bg:#14181d;
+        --muted:#a5b0bb; --muted-2:#93a1af;
+        --line:#1e252c;
+        --accent:#6b9bd6; --accent-ink:#9cc0f0; --accent-weak:#0e1826;
+        --link:#9bbdf0; --btn-bg:#0e1726; --btn-bd:#1a2a3f;
+      }
+    }
+
+    /* ========= Base ========= */
+    html,body{background:var(--bg); color:var(--fg); margin:0; padding:0}
+    body{
+      font:16px/1.75 ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI",
+            Roboto, Helvetica, Arial, "Noto Sans", sans-serif;
+      text-rendering:optimizeLegibility; -webkit-font-smoothing:antialiased;
+    }
+    .wrap{max-width:var(--maxw); margin:0 auto; padding:36px 18px 72px}
+    a{color:var(--link); text-decoration:none; transition:color .15s ease}
+    a:hover{color:var(--accent)}
+    a:focus-visible{outline:2px solid var(--accent); outline-offset:2px; border-radius:6px}
+
+    /* ========= Typography ========= */
+    h1{font-size:30px; letter-spacing:.2px; margin:0 0 4px; color:var(--accent-ink)}
+    h2{font-size:20px; margin:28px 0 12px}
+    h3{font-size:16px; margin:18px 0 6px}
+    p{margin:10px 0}
     .muted{color:var(--muted)}
-    .kicker{font-size:13px;text-transform:uppercase;letter-spacing:.12em;color:var(--muted)}
-    .pill{display:inline-block;padding:2px 8px;border-radius:999px;background:var(--card);border:1px solid var(--border);font-size:12px;color:var(--muted)}
-    .mono{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace}
+    .muted-2{color:var(--muted-2)}
+    .mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace}
+
+    /* ========= Header ========= */
+    header .meta{color:var(--muted); margin:4px 0 10px}
+    .role-pill{
+      display:inline-block; padding:2px 10px; border-radius:999px;
+      background:var(--accent-weak); color:var(--accent-ink); font-size:12px;
+      border:1px solid var(--btn-bd); margin-left:8px; vertical-align:middle;
+    }
+    .links{display:flex; gap:10px; flex-wrap:wrap; margin-top:6px}
+    .link-chip{
+      display:inline-flex; align-items:center; gap:6px;
+      padding:6px 10px; border-radius:999px; border:1px solid var(--btn-bd);
+      background:var(--btn-bg); color:var(--fg);
+    }
+    .link-chip:hover{border-color:var(--accent); color:var(--accent)}
+
+    /* ========= Nav ========= */
+    nav{margin:16px 0 28px; font-size:14px; border-bottom:1px solid var(--line); padding-bottom:8px}
+    nav a{color:inherit; margin-right:14px; padding:4px 6px; border-radius:8px}
+    nav a:hover{background:var(--accent-weak); color:var(--accent-ink)}
+
+    /* ========= Sections ========= */
+    section + section{margin-top:18px}
+    .callout{
+      background:var(--accent-weak); border:1px solid var(--btn-bd);
+      padding:12px 14px; border-radius:10px; color:var(--accent-ink)
+    }
+
+    /* ========= Publications ========= */
+    #pubs ul{list-style:none; padding-left:0; margin:10px 0 0}
+    .pub-item{
+      display:flex; gap:18px; align-items:flex-start; margin:0 0 22px;
+      padding:12px 0; border-bottom:1px dashed var(--line);
+    }
+    .pub-fig{flex:0 0 240px}
+    .pub-fig img{
+      max-width:100%; height:auto; border:1px solid var(--line); border-radius:6px; background:#fff;
+    }
+    .pub-body{flex:1; min-width:0}
+    .pub-title{
+      font-weight:700; color:var(--fg);
+      border-left:3px solid var(--accent); padding-left:10px; line-height:1.5;
+    }
+    .pub-meta{margin-top:4px}
+    .btns{display:flex; gap:8px; flex-wrap:wrap; margin-top:8px}
+    .btn{
+      display:inline-flex; align-items:center; gap:6px; padding:6px 10px;
+      border-radius:999px; border:1px solid var(--btn-bd); background:var(--btn-bg);
+      color:var(--fg); font-size:14px;
+    }
+    .btn:hover{border-color:var(--accent); color:var(--accent)}
+    .tag{display:inline-block; padding:2px 8px; border:1px solid var(--btn-bd); border-radius:999px;
+      font-size:12px; color:var(--muted); background:#fff; margin-left:8px}
+
+    /* ========= Lists ========= */
+    ul.clean{list-style:none; padding-left:0}
+    ul.clean li{margin:6px 0}
+
+    /* ========= Responsive ========= */
+    @media (max-width:720px){
+      .pub-item{flex-direction:column}
+      .pub-fig{width:100%; flex:0 0 auto}
+      nav{border:none; padding-bottom:0; margin-bottom:12px}
+    }
+
+    /* ========= Print ========= */
+    @media print{
+      nav, .links{display:none}
+      a{color:#000; text-decoration:underline}
+      .wrap{padding:0}
+    }
   </style>
 </head>
 <body>
-  <nav>
-    <div class="nav">
-      <a href="#about">关于</a>
-      <a href="#interests">研究兴趣</a>
-      <a href="#pubs">论文</a>
-      <a href="#projects">项目</a>
-      <a href="#contact">联系</a>
-    </div>
-  </nav>
-
   <div class="wrap">
     <header>
-      <img class="avatar" src="me.jpg" alt="avatar" onerror="this.style.visibility='hidden'">
-      <div class="title">
-        <div class="kicker">Machine Learning / Vision-Language</div>
-        <h1>你的名字 <span class="pill">Ph.D. Candidate</span></h1>
-        <p>School of Computing and Information Systems, University of Melbourne</p>
-        <div class="links">
-          <a href="mailto:you@example.com">📧 <span>you@example.com</span></a>
-          <a href="https://scholar.google.com/">🎓 <span>Google Scholar</span></a>
-          <a href="https://github.com/yourname">💻 <span>GitHub</span></a>
-          <a href="https://www.linkedin.com/in/yourname">🔗 <span>LinkedIn</span></a>
-          <a href="cv.pdf">📄 <span>CV</span></a>
-        </div>
+      <h1>Ruijiang Dong <span class="role-pill">Ph.D. Candidate</span></h1>
+      <div class="meta">School of Computing and Information Systems, Faculty of Engineering and Information Technology, The University of Melbourne</div>
+      <div class="links">
+        <a class="link-chip" href="mailto:ruijiangdong.ml@gmail.com">📧 ruijiangdong.ml@gmail.com</a>
+        <a class="link-chip" href="https://scholar.google.com/" target="_blank" rel="noopener">🎓 Google Scholar</a>
+        <a class="link-chip" href="https://github.com/ruijdong97" target="_blank" rel="noopener">💻 GitHub</a>
       </div>
     </header>
 
-    <section id="about" class="card">
-      <h2>关于我</h2>
-      <p>我专注于<strong>视觉-语言模型（VLMs）</strong>、<strong>基础模型鲁棒性</strong>与<strong>AI 生成内容检测</strong>。研究兴趣包括跨模态对齐、训练-自由/推理-期方法、以及可解释与可信 AI。</p>
-      <div class="badges">
-        <div class="badge">Vision-Language</div>
-        <div class="badge">Robustness</div>
-        <div class="badge">AIGI Detection</div>
-        <div class="badge">Prompt Learning</div>
-      </div>
-    </section>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#pubs">Publications</a>
+      <a href="#service">Academic Services</a>
+    </nav>
 
-    <section id="interests">
-      <h2>研究兴趣</h2>
-      <div class="grid">
-        <div class="card">
-          <h3>跨模态对齐与提示学习</h3>
-          <p class="muted">层级对齐分析、类感知权重、LLM 生成提示的协同。</p>
-        </div>
-        <div class="card">
-          <h3>基础模型鲁棒性</h3>
-          <p class="muted">对抗/后门攻击、隐私与内容安全、可信评测基准。</p>
-        </div>
-      </div>
-    </section>
+    <section id="about">
+  <h2>About Me</h2>
+  <p>
+    I am <strong>Ruijiang Dong</strong>, a Ph.D. student in the
+    <strong>Trustworthy Machine Learning and Reasoning Group (TMLR)</strong>,
+    Faculty of Engineering and Information Technology, The University of Melbourne,
+    advised by <strong>Dr. Feng Liu</strong>, <strong>Prof. Jianzhong Qi</strong>, and <strong>Dr. Zesheng Ye</strong>.
+  </p>
+  <p>
+    My research focuses on <strong>vision-language models (VLMs)</strong>,
+    with a particular interest in <em>efficient adaptation and prompt learning</em>
+    for large-scale models. 
+  </p>
+  <p>
+    Prior to my Ph.D., I worked as a research assistant at the
+    <strong>TMLR Lab at Hong Kong Baptist University (HKBU)</strong>, where I developed methods for
+    <em>source-free domain adaptation</em>.
+  </p>
+  <div class="callout muted-2">
+    Current focus: Efficient VLM tuning · Prompt learning · Training-free / inference-only methods
+  </div>
+</section>
+
 
     <section id="pubs">
-      <h2>论文</h2>
-      <ol>
-        <li><strong>CARPRT: Class-Aware Prompt Reweighting for Pre-Trained Vision-Language Models</strong> <span class="muted">（ICLR 2025 under review）</span></li>
-        <li><strong>Understanding Hierarchical Cross-Modal Alignment in CLIP Models</strong> <span class="muted">（NeurIPS 2025 submission）</span></li>
-      </ol>
-      <p class="muted">更多条目用 Markdown 写就行；如需 BibTeX，可在页脚提供 <span class="mono">.bib</span> 链接。</p>
+      <h2>Publications</h2>
+      <ul>
+        <li class="pub-item">
+          <div class="pub-fig">
+            <img src="degnet_overview.svg" alt="DEG-Net overview figure">
+          </div>
+          <div class="pub-body">
+            <div class="pub-title">
+              Diversity-enhancing Generative Network for Few-shot Hypothesis Adaptation
+              <span class="tag">ICML 2023</span>
+            </div>
+            <div class="pub-meta muted">
+              <strong>Ruijiang Dong</strong>*, Feng Liu*, Haoang Chi, Tongliang Liu, Mingming Gong,
+              Gang Niu, Masashi Sugiyama, Bo Han
+            </div>
+            <div class="btns">
+              <a class="btn" href="https://arxiv.org/abs/2307.05948" target="_blank" rel="noopener">📄 Paper</a>
+              <a class="btn" href="https://github.com/Ruijiang97/DEG-Net" target="_blank" rel="noopener">🧪 Code</a>
+            </div>
+          </div>
+        </li>
+      </ul>
     </section>
 
-    <section id="projects">
-      <h2>项目</h2>
-      <div class="grid">
-        <div class="card">
-          <h3>Prompt Weighting Toolkit</h3>
-          <p class="muted">最小可复现工具包：类感知加权与对齐分析。</p>
-          <p><a href="https://github.com/yourname/project" target="_blank" rel="noopener">GitHub →</a></p>
-        </div>
-        <div class="card">
-          <h3>AIGI Robustness Bench</h3>
-          <p class="muted">对抗/后门/统计一致性攻击基准；支持多数据集与指标。</p>
-          <p><a href="#" target="_blank" rel="noopener">Project Page →</a></p>
-        </div>
-      </div>
+    <section id="service">
+      <h2>Academic Services</h2>
+      <ul class="clean muted">
+        <li>Conference Reviewer: ICML, NeurIPS, ICLR, etc.</li>
+        <li>Journal Reviewer: Neural Networks, TMLR, etc.</li>
+      </ul>
     </section>
 
-    <section id="contact" class="card">
-      <h2>联系</h2>
-      <p>📧 邮箱：<a href="mailto:you@example.com">you@example.com</a></p>
-      <p>📍 地点：Melbourne, Australia</p>
-      <p>🧾 简历：<a href="cv.pdf">cv.pdf</a></p>
-    </section>
-
-    <footer>
-      <p>© <span id="y"></span> 你的名字 · 由 <span class="mono">GitHub Pages</span> 驱动 · <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a></p>
-    </footer>
+    
   </div>
 
-  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+  <script>
+    document.getElementById('last').textContent = new Date().toISOString().slice(0,10);
+  </script>
 </body>
 </html>
